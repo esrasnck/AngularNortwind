@@ -1,0 +1,199 @@
+1 ) terminal üzerinden new terminal. npm install -g @angular/cli komutu
+
+2) cmd yi bulmak için, select default shell deyip command prompt (powershell de çalışır. ama
+cmd daha garanti)
+
+3)node --version => node kurulu ile versiyon bilgisi verir.
+
+4)node is not regocnize diyorsa, code'u kapa aç. node kurulumu bitmeden, code'u açmış olursunuz.
+yine problem devam ederse, bilgisayarı aç / kapa. eğer yine sorun varsa, google la.
+
+-- node is not regocnize diyorsa, node'u kurarken muhtemelen code açılmış. ilgili komutlar 
+cache de oluyor. o yüzden yazdığın komutları tanımıyorum diyor.
+
+5)npm install -g @angular/cli => anlamı :npm => paket yüklemek için kullanılan komut.
+install=> yükle demek. -g => global demek. npm paketleri temel olarak iki seviyede kurulur. local ve
+global. global demek, ben bir kere bunu kurdum. bir daha kurmayacağım demek. bundan sonra
+bir angular projesi açtığımda, angular'ı tekrar kurmayacağım demek.
+
+ENTER
+
+=> angular cli kuruldu ise;
+
+6) c dizinine gidip, projeyi oraya atmak için klasör oluşturun. KampFrontend.
+
+7) kendimizi buraya yerleştirip, angular projesi oluşturcaz.
+
+cd.. => bir üst klasöre gider.
+
+8) cd KampFrontend => klasöre yerleşmek için kullanılan komut
+
+9)angular şablonu indirip kurabilmek için=> ng new northwind => enter
+
+10) Angular tarafında proje geliştireceksin. Js'de de tip güvenliliği zayıftır. O yüzden angular
+projeleri typescript ile yazılır(daha üst seviye dil) tip kontrolünü burada kontrol edeyim mi
+diyor. Ben de o yüzden yes y=> enter yapıyorum.
+
+11) angular da routing denilen bir olay var. sayfalar arası gezintiyi anlatır. buna da y=> diyoruz
+
+12) ne kullancaksın diyor. biz de css seçiyoruz.
+
+ANGULAR PROJESİ OLUŞMAYA BAŞLIYOR
+
+13) Bundan sonra, angular projesi oluşturmak istersek, ng new proje adı diyeceğiz.
+
+İLGİLİ KLASÖRE YERLEŞMEK GEREK
+
+14)cd northwind(klasör adı)
+
+15) ilgili klasöre geldim. bunu code'da açabilmek istiyorum. bunun için; 
+
+=> code . diyoruz= ilgili klasörü vs code da aç demek.
+
+16) ng serve => yayındaki uygulamayı açmamızı sağlıyor.
+
+ng=> angular cli demek. ng serve => yayına al. --open tarayıcıda benim için aç demek. Tarayıcı sorarsa,
+google chrome diyoruz.
+
+
+// node_modules => bu klasör, angular projesinde kullandığın tüm node paketlerini içeren yerdir.
+Uygulamada kullandığımız paketler. Çok fazla olduğundan, node_modules'u almaz. yarın bu projeyi indirip
+githubdan kullanmak istersek, ilk yapılacak HAREKET =>
+
+=> file open folder => ilk hareker:  npm install 
+
+ olmalı. Tüm gerekli paketler bu şekilde kuruluyor. Bunu bildiği yer de package.json da var. 
+burada iki temel node var. biri dependencies ikincisi devDependencies => dev developerdan gelir. (geliştirici
+mimarisi gibi.)
+
+bu iki paket de geliştirme yaparken kullandığımız paketlerdir. Bunu yayına aldığımız zaman, orada
+lazım olan paketler, dependencies kısmıdır. bu yüzden bootstrap dependency'e yazılır.
+
+devDependency => geliştiriciye lazım olan paketler.Örneğin unit- test(kodu kodla test etmek)
+biz yarın bunu yayına alacağımız zaman, devDependency yüklenmesin, dependency yüklensin, uygulama
+küçük olsun diye kullandığımız bir teknik. bu ikisi bu yüzden ayrı...
+
+Localde geliştirme yaptığımız için ikisini de kuruyor. PACKAGE.JSON' da bu işe yarıyor.
+
+SRC=>
+source'dan geliyor. Projenin kaynak kodlarını içeren klasördür. içerisinde app klasörü var
+
+APP=> application'dan geliyor. uygulama kodları burada
+
+index.html=> single page applicationlar her burada. buraya hemen hemen hiç dokunmayacağız.
+
+<app-root></app-root> => yüklenen componentler var. angular tarafından tanınan bir component bu.
+demek ki biz angular tarafında componentler geliştircez.
+
+
+// dersin akışı :
+
+app klasörü içersine, new folder => components => tüm componentslar bunun içine konacak. ana component
+dışarda. app.component.css => app componenti ilgilendiren css kodları
+app.component.html => app component'in html', (hayati dosya 1)
+app.component.spec.ts => unit test
+
+** app.component.ts => işte bizim ana componentimiz (sanırım.) bunu açıyoruz. (hayati dosya 2)
+
+ts => typescript. html ile kardeş ve her yere beraber gidiyor. html olayın görüntüsü. "ts" ise datayı
+yönettiğimiz yer. datayı yöneten yerler componentler. o yüzden component dosyası, datayı yönettiğimiz
+yerin ta kendisi.
+
+html => kendini yapılandırırken, ts den yararlanıyor. 
+
+html=> en altına gelelim :) router outlet hariç heryeri siliyoruz. 
+
+
+terminalin olduğu yer, sürekli compile oluyor. buna watcher service deniyor.
+
+
+<router-outlet></router-outlet> => silinmemeli. 
+
+cmd'ye gelip, ctrl + c demek => terminali (çalışan kodları) durdurayım mı demek. bunu y diyoruz.
+
+sonra yayın gidecek. sonradan yeniden yayınlamak için;
+
+ng serve --open
+
+Angular / react / vue js=> dom manipulasyonu yapmaya yarıyor. maalesef hmtl bu konuda yeteneksiz..
+
+Backend => datayı yönetir. angular ile beraber bir api ya bağlanıp, oradaki dataları
+manupile edebiliyoruz.
+
+data deyince akla,ilgili hmtl'in componenti gelmeli => app.component.ts açacaz. 
+
+
+** html'ler kendi componentindeki tüm değişkenleri tanıyor. 
+
+components oluşturmak için : components klasöründa sağa tıkla. open in integrated terminal de. seni 
+o klasöre otomatik olarak yerleştirsin.
+kendi componentsler oluşturmak için :
+
+ng g component product => ürünleri listeleyeceğimiz componentimiz. -g global demek. buradaki
+g ise generate => oluştur demek. 
+component oluştur. ismi de product olsun demek.
+
+yukarı tuşuna basarsam, bir önceki yazdığım komuta getirir.
+
+navi => navigation bar 
+
+her oluşturduğum şey için bir component yapıyorum (Element snaırım )
+
+
+component ekleyince, app.module.ts diye bir module var. module ne demek?
+
+temel manada, birbiri ile ilişkili componentleri/direktifleri ve farklı bileşenleri topladığımız yer.
+ör: bir uygulamada 2 tane modul olabilir. e ticaret uygulamasında e ticaret kısmı ve admin paneli gibi.
+(area gibi mi?)
+
+ileride kendi moduller oluşcak
+
+angular aşırı hiyerarşik yapıya sahiptir. ben component ekledikçe, angular cli otomatikman
+module ekledi. ve bu componentleri kullancam diye declara etti.
+
+index.html dosyasında, aslında component hiyararşimizi kuruyoruz.
+ağaç dizilimi bir componentten başlıuor. o da index.html'deki root.
+
+main.ts diye bir dosya va. orada ben hangi module ile başlayım diyor. o da AppModule'ü main.ts de tanıtmış
+olmamız.
+
+componentlerin html kısımlarına ilgili html kodlarını yerleştircez.
+
+css kodlarını ise; node_modules'da olmalı. static olan herşey node_module'de olmalı. bunun
+için pakete ihtiyac var
+npm install bootstrap => bunu indirdikten sonra, angular.json dosyasına gidecez.
+angular.json dosyası, angulardaki konfigürasyon yeridir. start-up /application.json gibi.
+oradaki sytle kısmına bootstrap'in kodunu yazıyoruz. (stilleri)
+
+yeni bir paket eklendiğinde, node yayınını durdurun. node'a gelip ctrl +c yapın. y deyin. sonra
+onu bir daha yayına alın. => ng serve --open
+
+
+
+   productId:1,
+    productName:'Bardak',
+    categoryId:1,
+    unitPrice:5
+  }
+
+  product1:any={productId:2,productName:'Camera',categoryId:1,unitPrice:5}
+  product2:any={productId:3,productName:'Laptop',categoryId:1,unitPrice:5} 
+  product3:any={productId:4,productName:'Mouse',categoryId:1,unitPrice:5}
+  product4:any={productId:5,productName:'Keyboard',categoryId:1,unitPrice:5}
+  product5:any={productId:6,productName:'Kardan Adam',categoryId:1,unitPrice:5}
+
+  products =[this.product,this.product1,this.product2,this.product3,this.product4,this.product5]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
