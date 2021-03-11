@@ -189,9 +189,29 @@ onu bir daha yayına alın. => ng serve --open
 
 
 
+2.Ders 
 
+api'dan gelen datayı yorumlamak çok önemli. Bana bir obje geliyor.(data, success result, message)
+o obje içindeki data ise, bir array şeklinde. 
 
+https://jsonplaceholder.typicode.com/todos => mesela bu api bana bir array döndürüyor. ilk yapmam
+ gereken şey, buna bakmak.
 
+https://jsonplaceholder.typicode.com/users => mesela burada da bir array geliyor. ama adress
+de obje gibi. gerçek bir sistemde, veriler bu şekilde gelir. bizim formatımız da buna benziyor.
+
+api'den gelen module ü karşılayacak bir client side oluşturmak gerek. (dto gibi) 
+
+app=> new Folder=> models klasörü => model'in içine class oluşturcaz. 
+ama typesrcipt olarak, api dan gelen modelleri karşılamak için, interfacelerden yararlanıyoruz.
+
+=> new file => product.ts => ts= typescript
+
+bu interfaceler de referans tutucu. ama c# daki kadar güçlü değil. burada daha çok olayı sınırlandırma
+için yararlanıyor. hangi veri girilirse, nereye konacak gibi.interface ile bir objenin içinde ne olması
+gerektiğini veriyoruz.
+
+** isimlendirme kuralları interfacelerin önüne I konmaz gibi. 
 
 
 
