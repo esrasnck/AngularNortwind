@@ -1,4 +1,17 @@
-<table class="table table-hover">
+
+<div *ngIf="dataLoaded==false"  class="spinner-border text-success" role="status">
+  <span class="visually-hidden"></span>
+</div>
+<table *ngIf="dataLoaded==true"  class="table table-hover">
+  <thead>
+    <tr>
+      <th>Id</th> 
+      <th>Urun Adı</th>
+      <th>Kategori</th>
+      <th>Fiyat</th>
+      <th>Stok Adedi</th>
+    </tr>
+  </thead>
     <tr *ngFor="let product of products"> <!--Td yi tekrar edeceğim için döngüyü buraya kondurcam -->
       <td>{{product.productId}}</td>
       <td>{{product.productName}}</td>
