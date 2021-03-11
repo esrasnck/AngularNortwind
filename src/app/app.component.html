@@ -9,9 +9,17 @@ built-in : angular içinde hali hazırda gelen. ama ilerleyen zamanda kendi dire
 
  *ngFor = angulr için önemli bir ifade. "directive" deniyor. directive: ilgili html etiketini manipule etmemize yarıyor. ngFor; ilgli html 
 etiketini tekrarla demek. ngFor, açılış kapanış tagını for döngüsünün parantezi olarak görüyor --*ngFor="let product of products" foreach
-döngüsü. let ise bildiğin let. --> 
-
-<app-navi></app-navi>
-<app-category></app-category>
-<app-product></app-product>
-<router-outlet></router-outlet>  <!--bunu silersek çalışmaz-->
+döngüsü. let ise bildiğin let. -->
+<div class="container">
+  <app-navi></app-navi>
+  <div class="row">
+    <div class="col-md-3">
+      <app-category></app-category>
+    </div>
+    <div class="col-md-9">
+      <app-product></app-product>
+    </div>
+  </div>
+  <router-outlet></router-outlet>
+  <!--bunu silersek çalışmaz-->
+</div>
