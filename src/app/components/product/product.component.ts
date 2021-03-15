@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/models/product';
 import { ProductService } from 'src/app/services/product.service';
 
@@ -22,14 +23,24 @@ export class ProductComponent implements OnInit {
   //zorundasın diyor.) */
 
   // servisi böyle injekte ettim.
-  constructor(private productService: ProductService) {} // product componentinin instance'ını yaratmak. Bellekte oluşturmak. newlemek. Constructorda bir datayı initiliza etmek
+  constructor(private productService: ProductService, private activatedRoute:ActivatedRoute) {} // product componentinin instance'ını yaratmak. Bellekte oluşturmak. newlemek. Constructorda bir datayı initiliza etmek
   // dışında hiç birşey yapılmaz. Constructor'ın tanımı c# da ve java da bu şekildedir. Çağrı yine yanlış öğretmiş mk.
 
   ngOnInit(): void {
     // productComponent ilk açıldığında çalışan metodumuzdur. bu dom'a yerleştiğinde, açıldığında çalışan komuttur.
     // constructor gibi değilmiş ama. o farklıymış.
     console.log('Init çalıştı');
-    this.getProducts(); // fonksiyonu çağırdım.
+    //activetedRoute a gidip kategori var mı yok mu görmem gerek
+    this.activatedRoute.params.subscribe(params=>{
+      if(params["categoryId"]){
+        this.getProductsByCategory(params["categoryId"])
+      }else{
+        this.getProducts()
+      }
+    })
+
+    // asekron olduğu için, params bana abone olunan birşey dönüyor. yoksa anlamı yok. response'u observable ın içindeki hede oluyor
+
   }
 
   // amacım burada ürünleri getirmek. Product datasını doldurmak gayretindeyim. bunun için bir ngOnInit'e de kod yazarım. ama düzenli olsun diye
@@ -39,6 +50,14 @@ export class ProductComponent implements OnInit {
       this.products = response.data; // api'lar genelde asekron olduğu için böyle yapıyoruz.
       this.dataLoaded = true; // => sekron haline getiriyor subscribe
     }); // servisten de bunu çağıryoruz. herşey mis. obsevable döndürdüğünden subscribe olabiliyoruz.
+  }
+
+  // kategori yoks ilkini varsa ikincisini kullan diye bir yapı kurcaz
+  getProductsByCategory(categoryId:number){
+  this.productService.getProductsByCategory(categoryId).subscribe(response=>{
+    this.products =response.data;
+    this.dataLoaded=true;
+  })
   }
 }
 
@@ -52,3 +71,9 @@ export class ProductComponent implements OnInit {
 // get'i subscribe edip devam ettirmek gerekiyor. Gelen response içimn ne yazacağını burada yazıyor.
 //  this.httpClient.get<ProductResponseModel>(this.apiUrl).subscribe((response)=>{"// yanıt başarılı geldiğinde ne yapayım buraya yazılır"});
 // httclinet bana şu url den işlem yap. gelen response'u buna maple. dönecek olan sonuca abone ol demek. gelen response/ yanıt buna (response'a eşleşiyor.)
+
+
+// sana categoryId gelirse, sen product'ı değil de onu https://localhost:44331/api/products/getbycategory?categoryId=1 çalıştır dememn gerekiyor gibi=> bunun için servisler
+
+
+// activatedRoute:ActivatedRoute = aktifleştirilimiş root. mevcut rout.(parametre gönderilen url gibi) angularda built in bir servis var. bu bir servis.

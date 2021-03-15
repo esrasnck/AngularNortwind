@@ -1,7 +1,13 @@
+<br>
+
 <ul class="list-group">
-    <li class="list-group-item">An item</li>
-    <li class="list-group-item">A second item</li>
-    <li class="list-group-item">A third item</li>
-    <li class="list-group-item">A fourth item</li>
-    <li class="list-group-item">And a fifth one</li>
+  <li [class]="getAllCategoryClass()" (click)="setAllCategory()" routerLink="/products">Tüm Ürünler</li>
+    <li (click)="setCurrentCategory(category)" routerLink="/products/category/{{category.categoryId}}" routerLinkActive="router-link-active"  *ngFor="let category of categories" [class]="getCurrentCategoryClass(category)">{{category.categoryName}}</li>
   </ul>
+<!--setcurrentcategory diye bir fonksiyon var. ona category gönderiyorum. önce ngfor çalışır. bu click eventi componentte olmalı-->
+
+<h5 *ngIf="currentCategory">{{currentCategory.categoryName}} sectiniz</h5>
+<!--currentcategory varsa demek.-->
+<!--currentcategory neyse onu active yap demek için category component-->
+<!--[class] : property binding : componenti bir bilgi ile değiştirmek istiyorsak, bunu yapıyoruz. [src] : imgae page deki rent a car bunu yapcaz.-->
+<!--router link e tıkladığında hangi root' gideyim demek-->
