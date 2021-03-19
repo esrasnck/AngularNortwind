@@ -233,3 +233,14 @@ export interface ProductResponseModel extends ResponseModel{ // bana gelecek dat
 
 ng g service category --skip--tests dersek, unit test kısmını oluşturmaz. bunları başka bir yerde kontrol altına alıyorsak, 
 kullanabiliriz. specleri hoca sildi. 
+
+
+vat = value added text
+
+pipe ne işe yarar? 
+elimizdeki veriyi, görsel olarak daha farklı şekilde gösterilmek için kullanılır. veri tabanına gidecek pipelar yazmayın.
+daha cok gelmiş veri değişsin. ben bunu eklediğimde angular.cli a da ekleniyor
+
+[(ngModel)]=> Can't bind to 'ngModel' since it isn't a known property of input hatası : ben ngModel'ın ne olduğunu bilemedim diyor.
+ng modelda bir input ile çalışırken senin AppModule'e gelip, bir tane module'ü import etmek gerekiyor. bunu bir kez yapıyorsunuz
+sonra tüm uygulamada geçerli oluyor.=> FormsModule o da.

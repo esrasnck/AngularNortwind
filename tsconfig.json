@@ -6,6 +6,7 @@
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
     "strict": true,
+    "strictNullChecks": false,  // cartItem için
     "strictPropertyInitialization": false,  // newlememize ya da fake data vermemize gerek kalmaz. ben initilaze etmeyecem. interface'in referans yapsını kullancam demek.
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,

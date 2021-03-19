@@ -2,6 +2,14 @@
 <div *ngIf="dataLoaded==false"  class="spinner-border text-success" role="status">
   <span class="visually-hidden"></span>
 </div>
+<div class="mb-3">
+  <label for="filterText" class="form-label">Ürün Ara</label>
+  <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="Arama ifadesi giriniz..">
+</div>
+<div *ngIf="filterText.length>2" class="alert alert-success">
+{{filterText}} aradınız
+</div> 
+<!--Kullanıcının inputa girdiği bilgiyi nasıl okurum? elimde data varsa, önce onu componentte tanımyacaz-->
 <table *ngIf="dataLoaded==true"  class="table table-hover">
   <thead>
     <tr>
@@ -9,14 +17,25 @@
       <th>Urun Adı</th>
       <th>Kategori</th>
       <th>Fiyat</th>
+      <th>Kdv'li Fiyat</th>
       <th>Stok Adedi</th>
+      <th></th>
     </tr>
   </thead>
-    <tr *ngFor="let product of products"> <!--Td yi tekrar edeceğim için döngüyü buraya kondurcam -->
+  <tbody>
+    <tr *ngFor="let product of products | filterPipe:filterText"> <!--Td yi tekrar edeceğim için döngüyü buraya kondurcam -->
       <td>{{product.productId}}</td>
-      <td>{{product.productName}}</td>
+      <td>{{product.productName | uppercase }}</td>
       <td>{{product.categoryId}}</td>
-      <td>{{product.unitPrice}}</td>
+      <td>{{product.unitPrice | currency }}</td>
+      <td>{{product.unitPrice | vatAdded:18 | currency }}</td>
       <td>{{product.unitsInStock}}</td>
+      <td><button (click)="addToCart(product)" type="button" class="btn btn-success">Sepete Ekle</button></td>
     </tr>
+  </tbody>
 </table>
+
+<!--21. satır: api den bu gelmemiş. burada hesaplayacağım. 10-20-30 kısmı parametresi angular default olarak, 
+        ilk olarak değiştirmek istenen veriyi gönderir. ikimci olarak da parametreyi gönderir.-->
+        <!-- [(ngModel)]="filterText" = ikisini bind ediyoruz demek. inputtan değiştirirsek, filter text değişir. 
+          filter text'i başka yerde değiştirirsen yine değişir demek-->
