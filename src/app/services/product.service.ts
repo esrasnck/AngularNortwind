@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http'; // bunun vasıtasıyla artık
 import { Observable } from 'rxjs';
 import { ListResponseModel } from '../models/listResponseModel';
 import { Product } from '../models/product';
+import { ResponseModel } from '../models/responseModel';
 //yapabiliyoruz. ama angular frameworkünde bu var. api call çağrısı yapabiliyoruz.
 
 
@@ -36,6 +37,10 @@ export class ProductService {
     return this.httpClient.get<ListResponseModel<Product>>(newpath);
   }
  
+  // Product eklemek için kullandığım metot => , 'den sonrası product nesnesi.=> hangi adrese ne gönderiyim.
+  add(product:Product):Observable<ResponseModel>{
+    return this.httpClient.post<ResponseModel>(this.apiUrl +"products/add", product)
+  }
 }
 
 // bir component httpclient'ı kullanmaz => httpClient'ı buraya koyduk.

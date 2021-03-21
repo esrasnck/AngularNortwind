@@ -244,3 +244,10 @@ daha cok gelmiş veri değişsin. ben bunu eklediğimde angular.cli a da ekleniy
 [(ngModel)]=> Can't bind to 'ngModel' since it isn't a known property of input hatası : ben ngModel'ın ne olduğunu bilemedim diyor.
 ng modelda bir input ile çalışırken senin AppModule'e gelip, bir tane module'ü import etmek gerekiyor. bunu bir kez yapıyorsunuz
 sonra tüm uygulamada geçerli oluyor.=> FormsModule o da.
+
+
+20 Mart:
+
+** frontend'de yapılan validation daha çok opsiyonel. kullanıcı ile sistemin birbirini sevmesi maksatlı. kullancıyı rahatlatmak, 
+boşuna sürekli backend'e gitmemek için.
+ama backend de kullanılan zorunlu. 

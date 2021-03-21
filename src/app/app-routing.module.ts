@@ -1,14 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CategoryComponent } from './components/category/category.component';
+import { ProductAddComponent } from './components/product-add/product-add.component';
 import { ProductComponent } from './components/product/product.component';
 
 const routes: Routes = [
   {path:"",pathMatch:"full",component:ProductComponent}, //herhangi birşey verilmezse, ana sayfa ne olsun? => path  // ancak constructorda değişiyor. onun dışında sabit. router outlette ne göstercez? burada yazılıyor
   // hiç birşey yazılmazsa, productComponent'i aç demek 
   {path:"products",component:ProductComponent}, // eğer birisi local host'un sonuna yani 4200'ün sonuna products derse, productcomponenti aç
-  {path:"products/category/:categoryId",component:ProductComponent}
+  {path:"products/category/:categoryId",component:ProductComponent},
   // id=1  demek  :categoryId demek
+  {path:"products/add",component:ProductAddComponent}
 ];
 
 @NgModule({
