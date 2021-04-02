@@ -53,8 +53,6 @@ export class ProductAddComponent implements OnInit {
               );
               
             }
-
-       
           }
         }
       ); //=> başarısız olursa kodu

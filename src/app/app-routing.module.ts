@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CategoryComponent } from './components/category/category.component';
+import { LoginComponent } from './components/login/login.component';
 import { ProductAddComponent } from './components/product-add/product-add.component';
 import { ProductComponent } from './components/product/product.component';
+import { LoginGuard } from './guards/login.guard';
 
 const routes: Routes = [
   {path:"",pathMatch:"full",component:ProductComponent}, //herhangi birşey verilmezse, ana sayfa ne olsun? => path  // ancak constructorda değişiyor. onun dışında sabit. router outlette ne göstercez? burada yazılıyor
@@ -10,7 +12,9 @@ const routes: Routes = [
   {path:"products",component:ProductComponent}, // eğer birisi local host'un sonuna yani 4200'ün sonuna products derse, productcomponenti aç
   {path:"products/category/:categoryId",component:ProductComponent},
   // id=1  demek  :categoryId demek
-  {path:"products/add",component:ProductAddComponent}
+  {path:"products/add",component:ProductAddComponent,canActivate:[LoginGuard]},
+  {path:"login",component:LoginComponent}
+  
 ];
 
 @NgModule({
